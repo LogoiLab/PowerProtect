@@ -1,0 +1,12 @@
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\bin\Debug\PowerProtect_GUI.exe.config
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\bin\Debug\PowerProtect_GUI.exe
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\bin\Debug\PowerProtect_GUI.pdb
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\MainWindow.baml
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\MainWindow.g.cs
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\App.g.cs
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI_MarkupCompile.cache
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI.g.resources
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI.Properties.Resources.resources
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI.csproj.GenerateResource.Cache
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI.exe
+C:\Users\miste\OneDrive\Programs\GitHub\PowerProtect\PowerProtect_GUI\PowerProtect_GUI\obj\Debug\PowerProtect_GUI.pdb
