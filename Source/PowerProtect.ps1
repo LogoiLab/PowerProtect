@@ -161,7 +161,9 @@ $ErrorActionPreference = "SilentlyContinue"
         Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$base64 = `"$base64`""
         Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$baseMD5 = `"$baseMD5`""
         Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value @'
-$script = (Split-Path $SCRIPT:MyInvocation.MyCommand.Path -Parent)+(Split-Path $SCRIPT:MyInvocation.MyCommand.Path -Leaf)
+$MD5 = ""
+$origMD5 = ""
+$script = $SCRIPT:MyInvocation.MyCommand.Path
 $cryptoServiceProvider = [System.Security.Cryptography.MD5CryptoServiceProvider];
 $hashAlgorithm = new-object $cryptoServiceProvider
 $hashByteArray = $hashAlgorithm.ComputeHash([Char[]]$base64)
@@ -191,15 +193,7 @@ else{
         New-Item "$env:TEMP\PowerProtect\bits.ps1" -Type file -Force
         Set-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$ErrorActionPreference = `"SilentlyContinue`""
         Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$base64 = `"$base64`""
-        Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "powershell.exe -EncodedCommand `$base64 $args"
-        if($DualLayerCk.IsChecked){
-            $utfbytes  = [System.Text.Encoding]::Unicode.GetBytes((Get-Content "$env:TEMP\PowerProtect\bits.ps1" -Raw))
-            $base64 = [System.Convert]::ToBase64String($utfbytes)
-            New-Item "$env:TEMP\PowerProtect\bits.ps1" -Type file -Force
-            Set-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$ErrorActionPreference = `"SilentlyContinue`""
-            Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "`$base64 = `"$base64`""
-            Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "powershell.exe -EncodedCommand `$base64"
-        }
+        Add-Content -Path "$env:TEMP\PowerProtect\bits.ps1" -Value "powershell.exe -EncodedCommand `$base64"
     }
     if($CompileCk.IsChecked){
         if($RandCompCk.IsChecked){
@@ -230,16 +224,15 @@ New-Item "$env:TEMP\PowerProtect\" -Type Directory -Force | Out-Null
     	<TextBox Name="BrowseBox" HorizontalAlignment="Left" Height="23" Margin="10,97.636,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="425"/>
     	<Button Name="BrowseButton" Content="Browse" HorizontalAlignment="Left" Margin="440,97.636,0,0" VerticalAlignment="Top" Width="75" Height="23" FontFamily="Trebuchet MS" FontSize="13.333"/>
     	<GroupBox Name="Protections" Header="Protections" HorizontalAlignment="Left" Margin="10,120.636,0,0" VerticalAlignment="Top" Height="110" Width="245" FontFamily="Trebuchet MS" FontSize="13.333">
-    		<StackPanel>
+    		<StackPanel Height="88">
 				<CheckBox Name="MD5Ck" Content="Use MD5 verification technique" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-				<CheckBox Name="DualLayerCk" Content="Also protect launcher script" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="223"/>
+				<Line StrokeThickness="3" Fill="White" Stroke="White" ClipToBounds="True" StrokeEndLineCap="Round" StrokeLineJoin="Round" Stretch="UniformToFill" Height="2" Margin="10,10,10,0" X1="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<CheckBox Name="CompileCk" Content="Compile as an executable" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+				<CheckBox Name="RandCompCk" Content="Randomize executable bytes" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Width="192.697"/>
 			</StackPanel>
 		</GroupBox>
     	<GroupBox Name="Miscellaneous" Header="Miscellaneous" HorizontalAlignment="Left" Margin="270,120.636,0,0" VerticalAlignment="Top" Height="110" Width="245" FontFamily="Trebuchet MS" FontSize="13.333">
-    		<StackPanel Height="110">
-    			<CheckBox Name="CompileCk" Content="Compile as an executable" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-    			<CheckBox Name="RandCompCk" Content="Randomize executable bytes" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Width="192.697"/>
-    			<Line StrokeThickness="3" Fill="White" Stroke="White" ClipToBounds="True" StrokeEndLineCap="Round" StrokeLineJoin="Round" Stretch="UniformToFill" Height="2" Margin="10,10,10,0" X1="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    		<StackPanel Margin="0,0,0,-0.48">
 				<CheckBox Name="RemCommentCk" Content="Remove comments from script" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 			</StackPanel>
 		</GroupBox>
